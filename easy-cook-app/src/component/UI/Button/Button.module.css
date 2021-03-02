@@ -1,0 +1,14 @@
+.Button {
+    height: 30px;
+    width: auto;
+    min-width: 70px;
+    background-color: rgb(253, 253, 253);
+    margin: 7px;
+}
+
+.Clicked{
+    background-color: rgb(64, 101, 224);
+    color: white;
+    border: 1px solid rgb(64, 101, 224) ;
+
+}
