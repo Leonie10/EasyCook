@@ -35,7 +35,7 @@ class FilterBar extends Component {
     }
 
     cuisineOnChangeHandler = (e) => {
-        console.log(e.target.value)
+        
         let cuisine = this.state.cuisine.length > 0? 
 
         (this.state.cuisine.includes(e.target.value)? 
@@ -43,7 +43,7 @@ class FilterBar extends Component {
         : [...this.state.cuisine, e.target.value] )
 
         : [e.target.value]
-        console.log(cuisine)
+        
         this.setState({cuisine: cuisine})
     }
 
@@ -79,7 +79,7 @@ class FilterBar extends Component {
     
 
     render() {
-      console.log(this.state)
+        console.log(this.state.ingredientExcluded)
         return <div>
                         <h1>Filter</h1>
                         <div>

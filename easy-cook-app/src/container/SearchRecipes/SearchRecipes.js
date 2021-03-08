@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Aux from '../../hoc/Aux/Aux'
 import Search from '../../component/Search/Search'
+import classes from './SearchRecipes.module.css'
 import Recipes from '../../component/Recipes/Recipes'
 import FilterBar from '../../component/Filter/FilterBar/FilterBar'
 
@@ -11,16 +12,15 @@ class SearchRecipes extends Component{
         ingredientsSearched: null,
         filterValues: null,
         recipes: null
-
     }
 
     componentDidUpdate(){
         
         if(this.state.ingredientsSearched !== null && this.state.ingredientsSearched.length !== 0){
             if(!this.state.filterValues){  
-                
-            fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=04dfcc4fb0bf42fca4548fcd8793f114&addRecipeInformation=true&fillIngredients=true&includeIngredients='
-            + this.state.ingredientsSearched)
+                const maxCalories = '&maxCalories=2000'
+            fetch('https://api.spoonacular.com/recipes/complexSearch?apiKey=04dfcc4fb0bf42fca4548fcd8793f114&number=40&addRecipeInformation=true&instructionsRequired=true&fillIngredients=true&includeIngredients='
+            + this.state.ingredientsSearched + maxCalories)
             .then(response => response.json())
             .then(data => {
                 if(this.state.recipes === null){
@@ -51,7 +51,9 @@ class SearchRecipes extends Component{
                const type = this.state.filterValues.type? '&type=' + this.state.filterValues.type : ''
                const maxReadyTime = '&maxReadyTime=' + this.state.filterValues.maxReadyTime
                const maxCalories = '&maxCalories=' + this.state.filterValues.maxCalories
-
+               const ingredientExcluded = this.state.filterValues.ingredientExcluded? '&excludeIngredients=' 
+               + this.state.filterValues.ingredientExcluded.map(ingredient => { return ingredient.split(' ').join('')}).join() : ''
+            
                let cuisine
                const cuisineState = this.state.filterValues.cuisine
                if(this.state.filterValues.cuisine.length > 0){
@@ -60,8 +62,8 @@ class SearchRecipes extends Component{
                 cuisine = ''
                }
 
-               const url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=04dfcc4fb0bf42fca4548fcd8793f114&number=40&addRecipeInformation=true&instructionsRequired=true&includeIngredients=' 
-               + this.state.ingredientsSearched + type + diet + cuisine +  maxReadyTime + maxCalories 
+               const url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=04dfcc4fb0bf42fca4548fcd8793f114&number=40&addRecipeInformation=true&instructionsRequired=true&fillIngredients=true&includeIngredients=' 
+               + this.state.ingredientsSearched + type + diet + cuisine +  maxReadyTime + maxCalories + ingredientExcluded
                console.log(url)
                fetch(url)
                .then(response => response.json())
@@ -97,9 +99,9 @@ class SearchRecipes extends Component{
 
    
     render(){
-        console.log(this.state.ingredientsSearched)
-        console.log(this.state.filterValues)
-        console.log(this.state.recipes)
+        if(this.state.recipes!== null){
+            console.log(this.state.recipes)
+        }
         return <Aux>
             <Search ingredientsSearched={this.getIngredientsSearch} mainSearch={true}/>
             <Recipes recipes={this.state.recipes} />

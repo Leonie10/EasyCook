@@ -43,7 +43,7 @@ class Search extends Component{
     }  
    
     selectedHandler = (suggestion) => {
-            console.log('click on li')
+            
             const ingredients = this.state.ingredientsSearched === null? [suggestion] : [...this.state.ingredientsSearched, suggestion]
             this.setState({selectedSuggestion: true, ingredientsSearched: ingredients, inputValue: '' })
             if(this.props.mainSearch === false){
@@ -71,8 +71,9 @@ class Search extends Component{
     
     render(){
         
-        console.log(this.state.recipeDatas)
-    return <div>
+        
+    return <div className={classes.Search}>
+        
         <Ingredients ingredientsSearched={this.state.ingredientsSearched} removeIngredients={this.removeIngredientsHandler} /> 
         <SearchBar 
         inputChanged={this.inputSearchHandler} 

@@ -1,0 +1,31 @@
+.ToolBar{
+    position: relative;
+    display: flex;
+    height: 510px;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+
+
+}
+
+.Video{
+    position: absolute;
+    top: -300px;
+    z-index: -1;
+    width: 100%;
+}
+
+.Paragraph{
+    position: relative;
+    top: -390px;
+    left: 450px;
+    width: 500px;
+    color: rgb(255, 255, 255);
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 500;
+    font-size: 35px;
+    z-index: 3;
+}

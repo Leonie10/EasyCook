@@ -1,3 +1,15 @@
 .NavigationItem{
-    color: red;
+    list-style: none;
+    font-family: 'Comfortaa', sans-serif;
+    font-size: 23px;
+    color: white;
+    font-weight: 800;
+    margin-right: 30px;
+    margin-top: 50px;
+}
+
+.NavigationItem a,
+.NavigationItem a:active {
+    text-decoration: none;
+    color:white;
 }

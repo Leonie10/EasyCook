@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face{
+  font-family: 'Comfortaa';
+  src: local('Comfortaa'), url(./fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf);
+}
+
+@font-face{
+  font-family: 'Roboto_Mono';
+  src: local('Roboto_Mono'), url(./fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf);
+}
+
+@font-face{
+  font-family: 'Rubik';
+  src: local('Rubik'), url(./fonts/Rubik/Rubik-VariableFont_wght.ttf);
+}
+
+@font-face{
+  font-family: 'Kalam';
+  src: local('Kalam'), url(./fonts/Kalam/Kalam-Light.ttf);
+  src: local('Kalam'), url(./fonts/Kalam/Kalam-Regular.ttf);
+  src: local('Kalam'), url(./fonts/Kalam/Kalam-Bold.ttf);
+}
